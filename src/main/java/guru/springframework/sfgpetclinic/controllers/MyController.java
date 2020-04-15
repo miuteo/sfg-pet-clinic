@@ -1,11 +1,18 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
+    private GreetingService greetingService;
+
+
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
     public String foo(){
-        System.out.println("Hello!");
-        return "foo";
+       return this.greetingService.sayHello();
     }
 }

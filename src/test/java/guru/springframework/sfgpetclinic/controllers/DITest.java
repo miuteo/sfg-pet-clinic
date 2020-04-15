@@ -16,6 +16,7 @@ public class DITest {
     private ConstructorInjectedController constructorInjectedController;
     private PropertyInjectedController propertyInjectedController;
     private SetterInjectedController setterInjectedController;
+    private MyController myController;
 
     @Before
     public void setup(){
@@ -23,6 +24,7 @@ public class DITest {
         this.constructorInjectedController = (ConstructorInjectedController)context.getBean("constructorInjectedController");
         this.propertyInjectedController = (PropertyInjectedController)context.getBean("propertyInjectedController");
         this.setterInjectedController = (SetterInjectedController)context.getBean("setterInjectedController");
+        this.myController = (MyController)context.getBean("myController");
 
     }
     @Test
@@ -37,6 +39,7 @@ public class DITest {
         assertEquals(constructorInjectedController.sayHello(), GreetingService.GREETING);
         assertEquals(propertyInjectedController.sayHello(), GreetingService.GREETING);
         assertEquals(setterInjectedController.sayHello(), GreetingService.GREETING);
+        assertEquals(myController.foo(), GreetingService.GREETING+"primary");
     }
 
 }
