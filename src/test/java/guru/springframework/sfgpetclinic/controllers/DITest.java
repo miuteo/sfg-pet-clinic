@@ -1,12 +1,10 @@
 package guru.springframework.sfgpetclinic.controllers;
 
 import guru.springframework.sfgpetclinic.SfgPetClinicApplication;
-import guru.springframework.sfgpetclinic.services.GreetingService;
+import guru.springframework.sfgpetclinic.services.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
@@ -36,10 +34,10 @@ public class DITest {
 
     @Test
     public void testDI(){
-        assertEquals(constructorInjectedController.sayHello(), GreetingService.GREETING);
-        assertEquals(propertyInjectedController.sayHello(), GreetingService.GREETING);
-        assertEquals(setterInjectedController.sayHello(), GreetingService.GREETING);
-        assertEquals(myController.foo(), GreetingService.GREETING+"primary");
+        assertEquals( ConstructorGreetingService.GREETING,constructorInjectedController.sayHello());
+        assertEquals(GreetingServiceImpl.GREETING, propertyInjectedController.sayHello() );
+        assertEquals(SetterGreetingService.GREETING,setterInjectedController.sayHello());
+        assertEquals(PrimaryGreetingService.GREETING,myController.foo());
     }
 
 }

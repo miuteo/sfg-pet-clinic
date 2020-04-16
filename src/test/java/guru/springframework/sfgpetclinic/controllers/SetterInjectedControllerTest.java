@@ -1,6 +1,5 @@
 package guru.springframework.sfgpetclinic.controllers;
 
-import guru.springframework.sfgpetclinic.services.GreetingService;
 import guru.springframework.sfgpetclinic.services.GreetingServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +16,6 @@ public class SetterInjectedControllerTest {
 
     @Test
     public void test(){
-       assertEquals(GreetingService.GREETING,setterInjectedController.sayHello());
+       assertEquals(GreetingServiceImpl.GREETING,setterInjectedController.sayHello());
     }
 }
