@@ -1,7 +1,10 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.services.ConstructorGreetingService;
+import guru.services.GreetingServiceImpl;
+import guru.services.PrimaryGreetingService;
+import guru.services.SetterGreetingService;
 import guru.springframework.sfgpetclinic.SfgPetClinicApplication;
-import guru.springframework.sfgpetclinic.services.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.SpringApplication;

@@ -1,13 +1,11 @@
 package guru.springframework.sfgpetclinic.controllers;
 
 import guru.springframework.sfgpetclinic.SfgPetClinicApplication;
-import guru.springframework.sfgpetclinic.services.PrimarySpanishGreetingService;
+import guru.services.PrimarySpanishGreetingService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.SpringApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.core.env.AbstractEnvironment;
 
 import static org.junit.Assert.assertEquals;
 
