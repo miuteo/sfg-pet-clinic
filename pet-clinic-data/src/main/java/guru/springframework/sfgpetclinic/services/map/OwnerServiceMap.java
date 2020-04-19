@@ -15,9 +15,4 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements O
                 .filter(e -> e.getFirstName().equals(lastName))
                 .findAny().orElse(null);
     }
-
-    @Override
-    public Owner save(Owner owner){
-        return super.save(owner.getId(),owner);
-    }
 }
