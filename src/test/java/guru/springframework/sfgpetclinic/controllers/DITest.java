@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.examplebeans.FakeDataSource;
 import guru.services.ConstructorGreetingService;
 import guru.services.GreetingServiceImpl;
 import guru.services.PrimaryGreetingService;
@@ -18,6 +19,7 @@ public class DITest {
     private PropertyInjectedController propertyInjectedController;
     private SetterInjectedController setterInjectedController;
     private MyController myController;
+    private FakeDataSource fakeDataSource;
 
     @Before
     public void setup(){
@@ -26,6 +28,7 @@ public class DITest {
         this.propertyInjectedController = (PropertyInjectedController)context.getBean("propertyInjectedController");
         this.setterInjectedController = (SetterInjectedController)context.getBean("setterInjectedController");
         this.myController = (MyController)context.getBean("myController");
+        fakeDataSource = (FakeDataSource) context.getBean(FakeDataSource.class);
 
     }
     @Test
@@ -41,6 +44,13 @@ public class DITest {
         assertEquals(GreetingServiceImpl.GREETING, propertyInjectedController.sayHello() );
         assertEquals(SetterGreetingService.GREETING,setterInjectedController.sayHello());
         assertEquals(PrimaryGreetingService.GREETING,myController.foo());
+    }
+
+    @Test
+    public void testFakeDataSource(){
+        assertEquals("teopassword",fakeDataSource.getPassword());
+        assertEquals("teousername",fakeDataSource.getUser());
+        assertEquals("teourl",fakeDataSource.getUrl());
     }
 
 }
