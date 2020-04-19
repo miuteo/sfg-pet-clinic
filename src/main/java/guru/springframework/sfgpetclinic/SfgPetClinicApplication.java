@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"guru.services","guru.springframework.sfgpetclinic"})
+@ComponentScan({"guru.services","guru.config","guru.springframework.sfgpetclinic"})
 public class SfgPetClinicApplication {
 
     public static void main(String[] args) {
