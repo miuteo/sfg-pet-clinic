@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.examplebeans.FakeDataSource;
 import guru.springframework.sfgpetclinic.SfgPetClinicApplication;
 import guru.services.PrimarySpanishGreetingService;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DiTestEs {
     private MyController myController;
+    private FakeDataSource fakeDataSource;
     @Before
     public void setUp(){
         SpringApplication springApplication=new SpringApplication(SfgPetClinicApplication.class);
@@ -18,10 +20,16 @@ public class DiTestEs {
         springApplication.setAdditionalProfiles("es"); // set active profile, We can write condition here based on requirements
         ConfigurableApplicationContext context = springApplication.run();  // run spring boot application
         myController = (MyController)context.getBean("myController");
+        fakeDataSource = context.getBean(FakeDataSource.class);
     }
 
     @Test
     public void test(){
         assertEquals(PrimarySpanishGreetingService.GREETING,myController.foo());
+    }
+
+    @Test
+    public void testFakeDataSourceProfile(){
+        assertEquals("teopasswordspanish",fakeDataSource.getPassword());
     }
 }

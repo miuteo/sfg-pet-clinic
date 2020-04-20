@@ -1,0 +1,8 @@
+teo:
+  password: teopassword
+  username: teousername
+  dburl: teourl
+  jms:
+    username: jmsusername
+    password: jmspassword
+    url: jmsurl
