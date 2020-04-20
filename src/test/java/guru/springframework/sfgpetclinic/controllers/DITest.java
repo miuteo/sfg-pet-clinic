@@ -52,5 +52,12 @@ public class DITest {
         assertEquals("teousername",fakeDataSource.getUser());
         assertEquals("teourl",fakeDataSource.getUrl());
     }
+    @Test
+    public void testFakeDataSourceMultiplePropertyFile(){
+        assertEquals("jmsusername",fakeDataSource.getJmsUser());
+        assertEquals("jmspassword",fakeDataSource.getJmsPassword());
+        assertEquals("jmsurl",fakeDataSource.getJmsUrl());
+    }
+
 
 }
