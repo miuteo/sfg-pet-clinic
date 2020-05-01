@@ -4,6 +4,7 @@ import guru.springframework.sfgpetclinic.model.*;
 import guru.springframework.sfgpetclinic.services.*;
 import guru.springframework.sfgpetclinic.services.map.OwnerServiceMap;
 import guru.springframework.sfgpetclinic.services.map.VetServiceMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,17 +15,19 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final PetService petService;
     private final SpecialityService specialityService;
     private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      PetService petService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.petService = petService;
         this.specialityService = specialityService;
         this.visitService = visitService;
     }
-
 
     @Override
     public void run(String... args) throws Exception {
@@ -49,12 +52,14 @@ public class DataLoader implements CommandLineRunner {
         owner1.setAddress("address1");
         owner1.setCity("bucharest");
         owner1.setTelephone("12345");
+        ownerService.save(owner1);
 
         Pet pet = new Pet();
         pet.setPetType(petType);
         pet.setOwner(owner1);
         pet.setBirthDate(LocalDate.of(2013,07,01));
         pet.setName("Axy");
+        petService.save(pet);
         owner1.getPets().add(pet);
 
         Visit visit = new Visit();
@@ -63,7 +68,7 @@ public class DataLoader implements CommandLineRunner {
         visit.setDescription("a description");
         visitService.save(visit);
 
-        ownerService.save(owner1);
+
 
 
         Owner owner2 = new Owner();
@@ -78,6 +83,7 @@ public class DataLoader implements CommandLineRunner {
         Owner owner3 = new Owner();
 //        owner3.setId(3l);
         owner3.setFirstName("Axy");
+        owner3.setLastName("Miu");
         owner3.setAddress("address3");
         owner3.setCity("bucharest");
         owner3.setTelephone("12343");
