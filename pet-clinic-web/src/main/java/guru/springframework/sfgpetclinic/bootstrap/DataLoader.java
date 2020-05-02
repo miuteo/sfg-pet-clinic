@@ -4,6 +4,7 @@ import guru.springframework.sfgpetclinic.model.*;
 import guru.springframework.sfgpetclinic.services.*;
 import guru.springframework.sfgpetclinic.services.map.OwnerServiceMap;
 import guru.springframework.sfgpetclinic.services.map.VetServiceMap;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Component
+@Slf4j
 public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
@@ -37,6 +39,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void loadData() {
+        log.info("loading data..");
         PetType petType = new PetType();
         petType.setName("dog");
         petTypeService.save(petType);
@@ -115,6 +118,6 @@ public class DataLoader implements CommandLineRunner {
         vet2.setFirstName("vet2FirstName");
         vet2.setLastName("vet2LastName");
         vetService.save(vet2);
-        System.out.println("done initializating...");
+        log.info("done initializating");
     }
 }

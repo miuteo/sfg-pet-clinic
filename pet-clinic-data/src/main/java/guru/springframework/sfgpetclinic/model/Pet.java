@@ -1,10 +1,13 @@
 package guru.springframework.sfgpetclinic.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 public class Pet extends BaseEntity{
     @ManyToOne
@@ -21,43 +24,4 @@ public class Pet extends BaseEntity{
     @OneToMany(mappedBy = "pet")
     private Set<Visit> visit = new HashSet<>();
 
-    public Set<Visit> getVisit() {
-        return visit;
-    }
-
-    public void setVisit(Set<Visit> visit) {
-        this.visit = visit;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public PetType getPetType() {
-        return petType;
-    }
-
-    public void setPetType(PetType petType) {
-        this.petType = petType;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
 }
